@@ -21,12 +21,14 @@ public class SocketHttpClient {
 
 
     private void readResponse(InputStream inputStream) {
+
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
             byte[] buffer = new byte[1024];
             int len;
             while ((len = inputStream.read(buffer)) != -1) {
                 baos.write(buffer, 0, len);
             }
+
             System.out.println(new String(baos.toByteArray()));
         } catch (IOException e) {
             e.printStackTrace();
